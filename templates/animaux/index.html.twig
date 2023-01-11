@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des animaux en BDD{% endblock %}
+
+{% block body %}
+    <h1>Gestion des animaux dans la bdd</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Animal</th>
+            <th>NID</th>
+            <th>Arriver</th>
+            <th>Départ</th>
+            <th>Proprietaire</th>
+            <th>Genre</th>
+            <th>Espece</th>
+            {#  <th>MF ND</th>#}
+            <th>Steriliser</th>
+            <th>Quarantaine</th>
+            <th></th>
+        </tr>
+        {% for a in animaux %}
+            <tr>
+                <td>{{ a.animaux }}</td>
+                <td>{{ a.NID }}</td>
+                <td>{{ a.arrive |date('d-m-Y') }}</td>
+                <td>{{ a.depart |date('d-m-Y') }}</td>
+                <td>{{ a.proprietaire }}</td>
+                <td>{{ a.Genre }}</td>
+                <td>{{ a.espece }}</td>
+                {#  <td>{{ a.MF_ND }}</td>#}
+                <td>{{ a.sterilise }}</td>
+                <td>{{ a.quarantaine }}</td>
+                <td>
+
+                    <a href="{{ path("app_animaux_modifier", {"id": a.id}) }}" class="btn btn-primary">modifier</a>
+
+{# <a href="{{ path("app_animaux_supprimer", {"id": a.id}) }}" class="btn btn-danger">supprimer</a>#}
+
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{path("app_animaux_ajouter")}}" class="btn btn-success">Ajouter un animal</a>
+{% endblock %}

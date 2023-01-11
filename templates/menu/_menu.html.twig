@@ -1,0 +1,6 @@
+
+{% for c in espaces %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path("app_enclos_voir", {"idEspaces":c.id}) }}">{{ c.superficie }}</a>
+    </li>
+{% endfor %}

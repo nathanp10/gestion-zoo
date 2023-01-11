@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supprimer un animal{% endblock %}
+
+{% block body %}
+    <h1>Supprimer la catégorie   <i>{{ animaux.animaux }} ?</i></h1>
+    {{ form(formulaire) }}
+
+    <a href="{{ path("app_animaux_voir", {"enclos"})  }}" class="btn btn-default">Appliquer la suppression</a>
+
+{% endblock %}

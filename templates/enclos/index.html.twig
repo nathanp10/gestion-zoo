@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des enclos en BDD{% endblock %}
+
+{% block body %}
+    <h1>Gestion des enclos dans la bdd</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Nom</th>
+            <th>EspaceIn</th>
+            <th>Superficie</th>
+            <th>MaxAnimaux</th>
+            <th>Quarantaine</th>
+
+
+
+
+        </tr>
+        {% for c in enclos %}
+            <tr>
+                <td>{{ c.nom }}</td>
+                <td>{{ c.espaceIn }}</td>
+                <td>{{ c.superficie }}</td>
+                <td>{{ c.maxAnimaux }}</td>
+                <td>{{ c.quarantaines }}</td>
+                <td>
+
+
+
+                    <a href="{{ path("app_enclos_modifier", {"id": c.id}) }}" class="btn btn-primary">modifier</a>
+{#<a href="{{ path("app_enclos_supprimer", {"id": c.id}) }}" class="btn btn-danger">supprimer</a>#}
+                    <a href="{{path("app_animaux_voir",{"idEnclos":c.id})}}" class="btn btn-secondary">Animaux</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+    </table>
+    <a href="{{path("app_enclos_ajouter")}}" class="btn btn-success">Ajouter un espaces</a>
+{% endblock %}

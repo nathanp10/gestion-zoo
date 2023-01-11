@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des espaces en BDD{% endblock %}
+
+{% block body %}
+    <h1>Gestion des espaces dans la bdd</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        {% for c in espaces %}
+            <tr>
+                <td>{{ c.nom }}</td>
+                <td>{{ c.superficie }}</td>
+                <td>
+
+
+                      <a href="{{ path("app_espaces_modifier", {"id": c.id}) }}" class="btn btn-primary">modifier</a>
+
+                      <a href="{{ path("app_espaces_supprimer", {"id": c.id}) }}" class="btn btn-danger">supprimer</a>
+                      <a href="{{path("app_enclos_voir",{"idEspaces":c.id})}}" class="btn btn-secondary">enclos</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{path("app_espaces_ajouter")}}" class="btn btn-success">Ajouter un espaces</a>
+{% endblock %}
